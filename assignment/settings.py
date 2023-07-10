@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--*u#0n@^#o=5(b%0!ijep5vs$vkt^5*kr9tpnnr+lly(s=2#vt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #User Defined Apps
+    'user_app',
+    'parking_app'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'assignment.urls'
+
+AUTH_USER_MODEL = "user_app.User"
+
 
 TEMPLATES = [
     {
@@ -73,10 +79,15 @@ WSGI_APPLICATION = 'assignment.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Development database.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "data-axle",
+        'USER': "root",
+        'PASSWORD': "dream",
+        'HOST': "localhost",
+        'PORT': '3306',
     }
 }
 
